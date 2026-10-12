@@ -1,0 +1,3 @@
+name: full-tcp
+flags: "-sT -p-"
+description: "full-tcp scan profile; authorized targets only."

@@ -1,0 +1,8 @@
+# Copy to scope.yaml and edit BEFORE scanning.
+# Add only assets covered by written authorization.
+owner: "Example lab owner"
+expires_at: "2027-12-31T23:59:00Z"
+targets:
+  - "127.0.0.1"
+  - "192.168.56.0/24"
+  - "lab.example.internal"

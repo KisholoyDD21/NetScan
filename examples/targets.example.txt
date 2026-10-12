@@ -1,0 +1,3 @@
+# Use only hosts included in your scope file.
+127.0.0.1
+# lab.example.internal

@@ -1,0 +1,3 @@
+name: udp-top
+flags: "-sU --top-ports 50"
+description: "udp-top scan profile; authorized targets only."

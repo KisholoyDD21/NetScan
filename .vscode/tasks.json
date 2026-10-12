@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {"label": "NetScan: lint", "type": "shell", "command": "ruff check src tests", "problemMatcher": []},
+    {"label": "NetScan: format", "type": "shell", "command": "black src tests", "problemMatcher": []},
+    {"label": "NetScan: tests", "type": "shell", "command": "pytest", "group": {"kind": "test", "isDefault": true}, "problemMatcher": []},
+    {"label": "NetScan: typecheck", "type": "shell", "command": "mypy --strict src/netscan", "problemMatcher": []},
+    {"label": "NetScan: build report demo", "type": "shell", "command": "netscan scan --targets 127.0.0.1 --scope-file examples/scope.example.yaml --authorized --profile discovery --report html,json,md,csv --output-dir reports", "problemMatcher": []}
+  ]
+}

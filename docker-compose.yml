@@ -1,0 +1,10 @@
+services:
+  netscan:
+    build: .
+    image: netscan:local
+    # Mount explicit authorization and target files for lab use only.
+    volumes:
+      - ./scope.yaml:/run/config/scope.yaml:ro
+      - ./examples/targets.example.txt:/run/config/targets.txt:ro
+      - ./reports:/app/reports
+    command: ["scan", "--targets-file", "/run/config/targets.txt", "--scope-file", "/run/config/scope.yaml", "--authorized", "--profile", "discovery", "--report", "html", "--output-dir", "/app/reports"]

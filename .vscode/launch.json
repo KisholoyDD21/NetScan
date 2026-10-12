@@ -1,0 +1,8 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {"name": "NetScan: authorized localhost discovery", "type": "debugpy", "request": "launch", "module": "netscan", "args": ["scan", "--targets", "127.0.0.1", "--scope-file", "examples/scope.example.yaml", "--authorized", "--profile", "discovery", "--report", "html", "--output-dir", "reports"], "console": "integratedTerminal", "justMyCode": true},
+    {"name": "NetScan: run tests", "type": "debugpy", "request": "launch", "module": "pytest", "args": ["-q", "tests"], "console": "integratedTerminal", "justMyCode": false},
+    {"name": "NetScan: CLI arguments", "type": "debugpy", "request": "launch", "module": "netscan", "args": ["--help"], "console": "integratedTerminal", "justMyCode": true}
+  ]
+}

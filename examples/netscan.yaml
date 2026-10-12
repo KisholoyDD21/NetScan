@@ -1,0 +1,9 @@
+default_profile: quick
+timeout_seconds: 300
+output_dir: reports
+exclude_hosts: []
+max_workers: 4
+rate_delay_seconds: 0.0
+cache_dir: .netscan_cache
+log_dir: logs
+max_targets: 4096

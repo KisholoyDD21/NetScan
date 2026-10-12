@@ -1,0 +1,11 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": ["tests"],
+  "editor.formatOnSave": true,
+  "[python]": {"editor.defaultFormatter": "ms-python.black-formatter", "editor.codeActionsOnSave": {"source.fixAll.ruff": "explicit"}},
+  "ruff.enable": true,
+  "mypy-type-checker.args": ["--strict"],
+  "editor.rulers": [100, 110],
+  "files.exclude": {"**/__pycache__": true, "**/.pytest_cache": true}
+}

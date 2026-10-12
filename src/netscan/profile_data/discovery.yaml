@@ -1,0 +1,3 @@
+name: discovery
+flags: "-sn"
+description: "discovery scan profile; authorized targets only."

@@ -1,0 +1,21 @@
+name: Bug report
+description: Report a reproducible defect
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Python, OS, Nmap, and NetScan versions
+    validations:
+      required: true

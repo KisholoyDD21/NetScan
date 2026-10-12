@@ -1,0 +1,3 @@
+name: custom
+flags: ""
+description: "Custom profile; requires validated flags supplied on the command line."
