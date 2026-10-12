@@ -4,7 +4,7 @@
 
 **Authorized network scanning, explainable risk scoring, scan diffing, and polished multi-format reports.**
 
-[![CI](https://github.com/YOUR-USERNAME/netscan/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR-USERNAME/netscan/actions/workflows/ci.yml)
+[![CI](https://github.com/KisholoyDD21/NetScan/actions/workflows/ci.yml/badge.svg)](https://github.com/KisholoyDD21/NetScan/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.11%2B-3776AB)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Ruff](https://img.shields.io/badge/lint-ruff-D7FF64)
@@ -12,12 +12,33 @@
 
 </div>
 
+> **Discover. Assess. Report.** NetScan turns authorized Nmap scans into structured results that are easy to review, compare, and share.
+
 > [!CAUTION]
 > **LEGAL & ETHICAL USE:** Scan only systems you own or have explicit written authorization to test. Every scan requires both `--authorized` and a scope file, and targets outside the declared scope are rejected. You are responsible for permissions, applicable laws, and avoiding service disruption. Do not use this tool against public or third-party ranges without documented authorization.
 
-NetScan is a portfolio-grade Python CLI that orchestrates Nmap and turns XML results into typed data, heuristic risk scores, change reports, and HTML/JSON/CSV/Markdown/PDF artifacts.
+NetScan is a Python command-line tool for authorized network assessments. It orchestrates Nmap, parses XML into typed results, assigns explainable heuristic risk scores, compares scans, and creates reports for both people and automation.
+
+| Scan safely | Understand results | Track changes | Share findings |
+|---|---|---|---|
+| Authorization flag and strict YAML scope checks | Host, port, service, and risk summaries | Compare JSON baselines across scans | Self-contained HTML plus JSON, CSV, Markdown, and optional PDF |
+
+## Contents
+
+- [Demo](#demo)
+- [Features](#features)
+- [Quickstart](#60-second-quickstart)
+- [Profiles and examples](#profiles-runnable-examples)
+- [Architecture](#architecture)
+- [Configuration](#configuration-reference)
+- [Security notes](#security-and-operational-notes)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Demo
+
+Run a small scan against a target explicitly included in your scope file:
 
 ```text
 $ netscan scan --targets 127.0.0.1 --scope-file scope.yaml --authorized --profile quick --report html --report json
@@ -32,23 +53,26 @@ Report written: reports/netscan-quick-20261009-120000.json
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-**HTML report preview (synthetic demo data):**
+### Report preview
 
-![NetScan HTML report preview using synthetic fixture data](docs/assets/html-report-preview.png)
+The preview uses synthetic fixture data; it does not expose results from a real network scan.
 
-[Open the sample HTML report](docs/assets/sample-report.html). The terminal animation is a placeholder; record the demo command with [asciinema](https://asciinema.org/) after running NetScan in your own authorized lab.
+![NetScan HTML report preview generated from synthetic fixture data](docs/assets/html-report-preview.png)
+
+[Open the sample HTML report](docs/assets/sample-report.html) · The sample report and preview use synthetic data. The terminal output above is illustrative; run NetScan in an authorized lab to produce your own results.
 
 ## Features
 
-- Explicit authorization flag + YAML scope enforcement before any scan.
-- IP, CIDR, hostname, comma-separated, and target-file inputs; large CIDRs are guarded by a target ceiling and acknowledgement option.
-- Nine profiles: discovery, quick, full TCP, SYN/stealth, service/version, UDP top ports, OS detection, guarded NSE vuln, and custom allowlisted flags.
-- Bounded asynchronous orchestration with a worker pool, per-target progress, console logging, and rotating JSON logs.
-- Typed host/port/service/script/metadata models; versioned JSON output.
-- Dark, self-contained HTML reports with filtering, sortable tables, risk colors, host details, and optional diff section.
-- CSV, GitHub-renderable Markdown, and optional PDF output.
-- Offline heuristic risk scoring; JSON baseline diffing for new/removed hosts, newly open/closed ports, and changed service fingerprints.
-- Optional TTL cache, Docker image, VS Code F5 configurations, tests without Nmap, CI for Python 3.11/3.12 on Ubuntu/Windows.
+| Capability | Details |
+|---|---|
+| **Scope-first safety** | Requires `--authorized` and a YAML scope file; out-of-scope targets are rejected before scanning. |
+| **Flexible targets** | Accepts IPs, CIDRs, hostnames, comma-separated inputs, and target files. Large networks have expansion limits and require explicit acknowledgement. |
+| **Nine scan profiles** | Discovery, quick, full TCP, stealth, service/version, UDP top ports, OS detection, guarded NSE vulnerability checks, and allowlisted custom flags. |
+| **Bounded execution** | Async orchestration with a worker pool, per-target progress, console logging, and rotating JSON logs. |
+| **Typed results** | Host, port, service, script, and scan metadata models with versioned JSON output. |
+| **Useful reports** | Self-contained dark HTML reports with filtering and sortable tables, plus JSON, CSV, Markdown, and optional PDF. |
+| **Risk and change tracking** | Offline heuristic risk scoring and JSON baseline diffs for host, port, and service-fingerprint changes. |
+| **Developer-friendly** | Optional TTL cache, Docker image, VS Code F5 configurations, tests that do not require Nmap, and CI for Python 3.11/3.12 on Ubuntu and Windows. |
 
 ## 60-second quickstart
 
